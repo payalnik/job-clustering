@@ -1,0 +1,18 @@
+# Core
+numpy>=1.26
+scikit-learn>=1.4
+scipy>=1.11
+
+# PostgreSQL + pgvector
+psycopg2-binary>=2.9
+pgvector>=0.2.5
+
+# HTTP + HTML
+requests>=2.31
+beautifulsoup4>=4.12
+
+# Gemini embeddings
+google-genai>=0.3
+
+# Dev / tests (optional)
+pytest>=7.4
