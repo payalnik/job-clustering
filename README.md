@@ -33,10 +33,14 @@ psql jobproc -c 'CREATE EXTENSION vector'
 # 3. Create tables
 python -m scripts.init_db
 
-# 4. Ingest listings (~3-5 minutes)
+# 4a. (Fast path) Restore a pre-built dump — skips ingest + embed.
+#     Requires data/dump/{job_listings,position_vectors}.copy.gz on disk.
+python -m scripts.load_dump
+
+# 4b. (Or, from scratch) Ingest listings (~3-5 minutes)
 python -m scripts.run_ingest
 
-# 5. Generate embeddings (~25 minutes for 50K new positions)
+# 5. Generate embeddings (~25 minutes for 50K new positions) — skip if you ran 4a
 python -m scripts.run_encode
 
 # 6. Build the neighborhood report
